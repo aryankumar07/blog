@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { Menu, X } from 'lucide-react'
-import { IKImage } from "imagekitio-react";
+import Image from './image.tsx'
+import { Link } from "react-router-dom";
+import { SignedOut, SignedIn, UserButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
 
   const [open, setOpen] = useState(false)
 
-
-
   return (
     <div className="w-full h-16 md:h-20 flex items-center justify-between">
 
       <div className="flex items-center gap-4 text-2xl font-bold">
-        <IKImage
-          urlEndpoint={import.meta.env.VITE_IK_URL_ENDPOINT}
-          path="./blogger.png" alt="Logo" className="w-8 h-8" />
+        <Image src="./blogger.png" className="w-8 h-8" />
         <span>Blogs</span>
       </div>
 
@@ -31,25 +29,35 @@ const Navbar = () => {
 
       {/*Mobile link list*/}
       <div className={`w-full h-screen flex flex-col items-center justify-center gap-8 font-medium text-lg absolute top-16 ${open ? 'right-0' : '-right-[100%]'}`}>
-        <a href="/">Home</a>
-        <a href="/">Trending</a>
-        <a href="/">Most Popular</a>
-        <a href="/">About</a>
-        <a href="">
-          <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">Login</button>
-        </a>
+        <Link to="/">Home</Link>
+        <Link to="/">Trending</Link>
+        <Link to="/">Most Popular</Link>
+        <Link to="/">About</Link>
+        <SignedOut>
+          <Link to="/login">
+            <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">Login</button>
+          </Link>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
 
 
       {/* desktop menu */}
       <div className="hidden md:flex items-center gap-8 xl:gap-12 font-medium">
-        <a href="/">Home</a>
-        <a href="/">Trending</a>
-        <a href="/">Most Popular</a>
-        <a href="/">About</a>
-        <a href="">
-          <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">Login</button>
-        </a>
+        <Link to="/">Home</Link>
+        <Link to="/">Trending</Link>
+        <Link to="/">Most Popular</Link>
+        <Link to="/">About</Link>
+        <SignedOut>
+          <Link to="/login">
+            <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">Login</button>
+          </Link>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
 
     </div>
