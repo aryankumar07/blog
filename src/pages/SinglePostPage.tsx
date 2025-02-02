@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Twitter, Instagram, } from 'lucide-react'
 import PostMenuctions from '../components/PostMenuActions.tsx'
 import Search from '../components/Search.tsx'
-
+import Comments from '../components/comments.tsx'
 const SinglePost = () => {
   return (
     <div className='flex flex-col gap-8'>
@@ -87,6 +87,7 @@ const SinglePost = () => {
           <Search />
         </div>
       </div>
+      <Comments />
     </div>
   )
 }
