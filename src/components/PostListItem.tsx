@@ -13,14 +13,14 @@ const PostListItem = () => {
           <span>Written By :-</span>
           <Link to="/test" className='text-blue-800' >John Doe</Link>
           <span>on</span>
-          <Link to="test" className='text-blue-800'>web Design</Link>
+          <Link to="/test" className='text-blue-800'>web Design</Link>
           <span>@ days ago</span>
         </div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
           aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
-        <Link to="test" className='underline text-blue-800 text-sm' >Read More</Link>
+        <Link to="/test" className='underline text-blue-800 text-sm' >Read More</Link>
       </div>
     </div>
   )

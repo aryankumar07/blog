@@ -21,7 +21,7 @@ const FeaturedPost = () => {
             <div className='flex items-center gap-4 text-sm lg:text-base mb-4'>
               <h1>02.</h1>
               <Link to="" className='text-blue-300' >Web Design</Link>
-              <span className='text-gray-500 test-sm'>2 Days ago</span>
+              <span className='text-gray-500 text-sm'>2 Days ago</span>
             </div>
             <Link to="/test" className='text-base sm:text-lg md:text-2xl lg:text-xl xl:text-2xl'>Post Description</Link>
           </div>
@@ -32,7 +32,7 @@ const FeaturedPost = () => {
             <div className='flex items-center gap-4 text-sm lg:text-base mb-4'>
               <h1>03.</h1>
               <Link to="" className='text-blue-300' >Web Design</Link>
-              <span className='text-gray-500 test-sm'>2 Days ago</span>
+              <span className='text-gray-500 text-sm'>2 Days ago</span>
             </div>
             <Link to="/test" className='text-base sm:text-lg md:text-2xl lg:text-xl xl:text-2xl'>Post Description</Link>
           </div>
@@ -43,7 +43,7 @@ const FeaturedPost = () => {
             <div className='flex items-center gap-4 text-sm lg:text-base mb-4'>
               <h1>04.</h1>
               <Link to="" className='text-blue-300' >Web Design</Link>
-              <span className='text-gray-500 test-sm'>2 Days ago</span>
+              <span className='text-gray-500 text-sm'>2 Days ago</span>
             </div>
             <Link to="/test" className='text-base sm:text-lg md:text-2xl lg:text-xl xl:text-2xl'>Post Description</Link>
           </div>
