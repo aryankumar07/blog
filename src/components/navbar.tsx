@@ -5,12 +5,10 @@ import { Link } from "react-router-dom";
 import { SignedOut, SignedIn, UserButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
-
   const [open, setOpen] = useState(false)
 
   return (
     <div className="w-full h-16 md:h-20 flex items-center justify-between">
-
       <div className="flex items-center gap-4 text-2xl font-bold">
         <Image src="./blogger.png" className="w-8 h-8" />
         <span>Blogs</span>
