@@ -9,10 +9,12 @@ const Navbar = () => {
 
   return (
     <div className="w-full h-16 md:h-20 flex items-center justify-between">
-      <div className="flex items-center gap-4 text-2xl font-bold">
-        <Image src="./blogger.png" className="w-8 h-8" />
-        <span>Blogs</span>
-      </div>
+      <Link to='/'>
+        <div className="flex items-center gap-4 text-2xl font-bold">
+          <Image src="./blogger.png" className="w-8 h-8" />
+          <span>Blogs</span>
+        </div>
+      </Link>
 
       {/* mobile menu */}
       <div className="md:hidden">
