@@ -2,8 +2,26 @@ import { Link } from "react-router-dom"
 import MainCategories from "../components/MainCategories"
 import FeaturedPost from "../components/FeaturedPost"
 import PostList from "../components/PostList"
-
+// import { useAuth } from "@clerk/clerk-react"
+// import { useEffect } from "react"
+//
 const HomePage = () => {
+  //
+  // const { getToken } = useAuth()
+  //
+  //
+  // useEffect(() => {
+  //
+  //   const fetch = async () => {
+  //     const token = await getToken()
+  //     console.log(token)
+  //   }
+  //
+  //   fetch()
+  // }, [getToken])
+  //
+
+
   return (
     <div className="mt-4 flex flex-col gap-4">
 

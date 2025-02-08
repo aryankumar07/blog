@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useAuth } from '@clerk/clerk-react'
 import { CommentType } from '../utils/commetsTypes.ts'
+import { useAuthId } from '../hooks/useAuthId.ts'
 
 interface commentsProps {
   postId: string
@@ -23,21 +24,7 @@ const Comments: React.FC<commentsProps> = ({
   const { getToken } = useAuth()
 
 
-  const getUserId = async () => {
-    try {
-      const jwtToken = await getToken()
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/userId`, {
-        headers: {
-          'Authorization': `Bearer ${jwtToken}`
-        }
-      })
-      return res.data
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-
+  const { isUserPending, iserror, UserId } = useAuthId()
 
   const getComments = async (postId: string) => {
     try {
@@ -53,10 +40,6 @@ const Comments: React.FC<commentsProps> = ({
     queryFn: () => getComments(postId)
   })
 
-  const { isPending: isUserPending, error: iserror, data: UserId } = useQuery({
-    queryKey: ["userId"],
-    queryFn: () => getUserId()
-  })
 
 
   const mutation = useMutation({
@@ -86,13 +69,11 @@ const Comments: React.FC<commentsProps> = ({
   if (isCommentPending) return "Loading ... "
   if (iscommenterror) return "Something went Wrong"
   if (!commnetData) return "comments not found"
-  else console.log(commnetData)
 
 
   if (isUserPending) return "Loading.."
   if (iserror) return "Please refresh"
   if (!UserId) return "please refresh"
-  else console.log("user id : ", UserId)
 
 
   const handleSubmit = () => {

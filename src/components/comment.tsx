@@ -68,7 +68,7 @@ const Comment: React.FC<CommentProps> = ({
           onClick={() => {
             mutation.mutate()
           }}
-          className={`${canDelete ? 'block' : 'hidden'}`}>
+          className={`${canDelete ? 'block' : 'hidden'} cursor-pointer`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 50 50"

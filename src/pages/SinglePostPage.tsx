@@ -81,7 +81,7 @@ const SinglePost = () => {
               <Link to=""><Instagram size={20} /></Link>
             </div>
           </div>
-          <PostMenuctions />
+          <PostMenuctions post={data} />
           <h1 className='font-medium mt-4 mb-4'>Categories</h1>
           <div className='flex flex-col gap-2 text-sm'>
             <Link to="/" className='underline'>All</Link>
