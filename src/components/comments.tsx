@@ -15,13 +15,27 @@ const Comments: React.FC<commentsProps> = ({
   postId
 }) => {
 
-
   const queryClient = useQueryClient()
 
 
   const [comment, setComment] = useState("")
 
   const { getToken } = useAuth()
+
+
+  const getUserId = async () => {
+    try {
+      const jwtToken = await getToken()
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/userId`, {
+        headers: {
+          'Authorization': `Bearer ${jwtToken}`
+        }
+      })
+      return res.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
 
 
@@ -34,9 +48,14 @@ const Comments: React.FC<commentsProps> = ({
     }
   }
 
-  const { isPending, error, data } = useQuery({
+  const { isPending: isCommentPending, error: iscommenterror, data: commnetData } = useQuery({
     queryKey: ["comments", postId],
     queryFn: () => getComments(postId)
+  })
+
+  const { isPending: isUserPending, error: iserror, data: UserId } = useQuery({
+    queryKey: ["userId"],
+    queryFn: () => getUserId()
   })
 
 
@@ -46,7 +65,6 @@ const Comments: React.FC<commentsProps> = ({
       console.log(jwtToken)
       await axios.post(`${import.meta.env.VITE_API_URL}/comments/${postId}`, {
         desc: data,
-        postId: postId
       },
         {
           headers: {
@@ -65,10 +83,16 @@ const Comments: React.FC<commentsProps> = ({
 
 
 
-  if (isPending) return "Loading ... "
-  if (error) return "Something went Wrong"
-  if (!data) return "comments not found"
-  else console.log(data)
+  if (isCommentPending) return "Loading ... "
+  if (iscommenterror) return "Something went Wrong"
+  if (!commnetData) return "comments not found"
+  else console.log(commnetData)
+
+
+  if (isUserPending) return "Loading.."
+  if (iserror) return "Please refresh"
+  if (!UserId) return "please refresh"
+  else console.log("user id : ", UserId)
 
 
   const handleSubmit = () => {
@@ -91,7 +115,7 @@ const Comments: React.FC<commentsProps> = ({
           className="bg-blue-800 px-4 py-3 text-white font-medium rounded-xl" >Send</button>
       </div>
       {
-        data.map((value: CommentType) => <Comment comment={value} />)
+        commnetData.map((value: CommentType) => <Comment key={value._id} comment={value} canDelete={value.user._id === UserId} postId={postId} />)
       }
     </div>
   )
