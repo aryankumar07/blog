@@ -73,8 +73,10 @@ const HomePage = () => {
 
       <MainCategories />
 
-
-      <FeaturedPost />
+      <div>
+        <h1 className="my-8 text-2xl text-gray-500" >Featured Post</h1>
+        <FeaturedPost />
+      </div>
 
       <div className="">
         <h1 className="my-8 text-2xl text-gray-500" >Recent Post</h1>
