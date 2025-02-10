@@ -9,7 +9,6 @@ const Search = () => {
 
   const handelKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      console.log("pressed")
       const query = (event.target as HTMLInputElement).value
       const pathname = loaction.pathname
       if (pathname === '/posts') {

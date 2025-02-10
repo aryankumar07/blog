@@ -45,7 +45,6 @@ const Comments: React.FC<commentsProps> = ({
   const mutation = useMutation({
     mutationFn: async (data: string) => {
       const jwtToken = await getToken()
-      console.log(jwtToken)
       await axios.post(`${import.meta.env.VITE_API_URL}/comments/${postId}`, {
         desc: data,
       },
