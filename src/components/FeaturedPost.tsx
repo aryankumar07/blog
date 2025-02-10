@@ -18,7 +18,6 @@ const FeaturedPost = () => {
   if (isPending) return "Loading ..."
   if (error) return "Error in fetching"
   if (!data) return "No data found"
-  else console.log(data[0].img)
 
 
 
